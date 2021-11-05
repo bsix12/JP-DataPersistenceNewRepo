@@ -11,10 +11,12 @@ public class MainManager : MonoBehaviour
     public Rigidbody Ball;
 
     public Text ScoreText;
+    public Text highScoreText;              // reference to highScoreText on canvas.  ADD REFERENCE in inspector
     public GameObject GameOverText;
     
     private bool m_Started = false;
     private int m_Points;
+    private int highScore = 0;              // container to store the highScore
     
     private bool m_GameOver = false;
 
@@ -62,6 +64,14 @@ public class MainManager : MonoBehaviour
         }
     }
 
+    void CheckIfHighScore()                 // compare current score to highScore
+    {
+        if (m_Points > highScore)
+        {
+            highScoreText.text = "High Score: " + m_Points;
+        }
+    }
+
     void AddPoint(int point)
     {
         m_Points += point;
@@ -72,5 +82,6 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+        CheckIfHighScore();                 // check if new high score
     }
 }
