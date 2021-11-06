@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class MainManager : MonoBehaviour
 {
@@ -10,12 +11,14 @@ public class MainManager : MonoBehaviour
     public int LineCount = 6;
     public Rigidbody Ball;
 
-    public Text ScoreText;
-    public Text highScoreText;              // reference to highScoreText on canvas.  ADD REFERENCE in inspector
-    public GameObject GameOverText;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI highScoreText;              // reference to highScoreText on canvas.  ADD REFERENCE in inspector
+    public TextMeshProUGUI gameOverText;
+    public TMP_InputField playerInputField;
+    // public GameObject gameOverText;                  // replaced with TMP
     
     private bool m_Started = false;
-    private int m_Points;
+    private int currentScore;
     private int highScore = 0;              // container to store the highScore
     
     private bool m_GameOver = false;
@@ -57,6 +60,12 @@ public class MainManager : MonoBehaviour
         }
         else if (m_GameOver)
         {
+            if (Input.GetKey(KeyCode.Return))
+            {
+                playerInputField.gameObject.SetActive(false);
+                highScoreText.text = "High Score: " + currentScore + " by " + playerInputField.text;
+            }
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -66,22 +75,30 @@ public class MainManager : MonoBehaviour
 
     void CheckIfHighScore()                 // compare current score to highScore
     {
-        if (m_Points > highScore)
+        if (currentScore > highScore)
         {
-            highScoreText.text = "High Score: " + m_Points;
+            GetPlayerInput();
+                        
         }
+    }
+
+    void GetPlayerInput()
+    {
+        playerInputField.gameObject.SetActive(true);
     }
 
     void AddPoint(int point)
     {
-        m_Points += point;
-        ScoreText.text = $"Score : {m_Points}";
+        currentScore += point;
+        scoreText.text = $"Score : {currentScore}";
     }
 
     public void GameOver()
     {
         m_GameOver = true;
-        GameOverText.SetActive(true);
+        gameOverText.gameObject.SetActive(true);
         CheckIfHighScore();                 // check if new high score
     }
+    
+
 }
