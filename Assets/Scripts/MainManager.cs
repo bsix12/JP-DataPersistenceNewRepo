@@ -69,17 +69,22 @@ public class MainManager : MonoBehaviour
         }
         else if (m_GameOver)
         {
-            if (Input.GetKey(KeyCode.Return))
+            if (Input.GetKey(KeyCode.Return) && inputFieldIsActive)
             {
                 playerInputField.gameObject.SetActive(false);
                 DataStorage.Instance.playerInputData = playerInputField.text;
+                inputFieldIsActive = false;
+                newHighScoreInfo.gameObject.SetActive(false);
+                pressSpaceInfo.gameObject.SetActive(true);
+                resetSpaceIsActive = true;
                 UpdateHighScore();
                 SavePlayerInput();
             }
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && resetSpaceIsActive)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                resetSpaceIsActive = false;
             }
         }
     }
@@ -88,9 +93,15 @@ public class MainManager : MonoBehaviour
     {
         if (currentScore > DataStorage.Instance.highScoreData)
         {
+            inputFieldIsActive = true;
+            newHighScoreInfo.gameObject.SetActive(true);
             GetPlayerInput();
             DataStorage.Instance.highScoreData = currentScore;
-                        
+        }
+        else
+        {
+            pressSpaceInfo.gameObject.SetActive(true);
+            resetSpaceIsActive = true;
         }
     }
 
@@ -120,5 +131,17 @@ public class MainManager : MonoBehaviour
     public void SavePlayerInput()
     {
         DataStorage.Instance.SaveDataToDisk();
+    }
+
+    public void ResetHighScore()
+    {
+        if (!m_Started)
+        {
+            DataStorage.Instance.playerInputData = " ";
+            DataStorage.Instance.highScoreData = 0;
+            highScoreText.text = "Play to achieve a new high score!";
+        }
+
+        
     }
 }
