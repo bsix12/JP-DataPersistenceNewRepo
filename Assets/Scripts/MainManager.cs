@@ -14,11 +14,14 @@ public class MainManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;              // reference to highScoreText on canvas.  ADD REFERENCE in inspector
     public TextMeshProUGUI gameOverText;
+    public TextMeshProUGUI newHighScoreInfo;
     public TMP_InputField playerInputField;
-    // public GameObject gameOverText;                  // replaced with TMP
+    public TextMeshProUGUI pressSpaceInfo;
     
     private bool m_Started = false;    
     private bool m_GameOver = false;
+    private bool inputFieldIsActive = false;
+    private bool resetSpaceIsActive = false;
     private int currentScore;
     
     // Start is called before the first frame update
@@ -33,8 +36,6 @@ public class MainManager : MonoBehaviour
             highScoreText.text = "Play to achieve a new high score!";
         }
         
-        
-
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
         
