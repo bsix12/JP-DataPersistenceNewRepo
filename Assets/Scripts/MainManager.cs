@@ -63,6 +63,7 @@ public class MainManager : MonoBehaviour
             if (Input.GetKey(KeyCode.Return))
             {
                 playerInputField.gameObject.SetActive(false);
+                DataStorage.Instance.playerInputData = playerInputField.text;
                 highScoreText.text = "High Score: " + currentScore + " by " + playerInputField.text;
             }
 
@@ -75,16 +76,17 @@ public class MainManager : MonoBehaviour
 
     void CheckIfHighScore()                 // compare current score to highScore
     {
-        if (currentScore > highScore)
+        if (currentScore > DataStorage.Instance.highScoreData)
         {
             GetPlayerInput();
+            DataStorage.Instance.highScoreData = currentScore;
                         
         }
     }
 
     void GetPlayerInput()
     {
-        playerInputField.gameObject.SetActive(true);
+        playerInputField.gameObject.SetActive(true);        
     }
 
     void AddPoint(int point)
