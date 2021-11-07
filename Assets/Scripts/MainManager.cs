@@ -17,12 +17,9 @@ public class MainManager : MonoBehaviour
     public TMP_InputField playerInputField;
     // public GameObject gameOverText;                  // replaced with TMP
     
-    private bool m_Started = false;
-    private int currentScore;
-    private int highScore = 0;              // container to store the highScore
-    
+    private bool m_Started = false;    
     private bool m_GameOver = false;
-
+    private int currentScore;
     
     // Start is called before the first frame update
     void Start()
@@ -76,6 +73,7 @@ public class MainManager : MonoBehaviour
                 playerInputField.gameObject.SetActive(false);
                 DataStorage.Instance.playerInputData = playerInputField.text;
                 UpdateHighScore();
+                SavePlayerInput();
             }
 
             if (Input.GetKeyDown(KeyCode.Space))
@@ -118,5 +116,8 @@ public class MainManager : MonoBehaviour
         CheckIfHighScore();                 // check if new high score
     }
     
-
+    public void SavePlayerInput()
+    {
+        DataStorage.Instance.SaveDataToDisk();
+    }
 }
