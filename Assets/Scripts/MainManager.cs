@@ -27,6 +27,17 @@ public class MainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (DataStorage.Instance.highScoreData != 0)
+        {
+            UpdateHighScore();
+        }
+        else
+        {
+            highScoreText.text = "Play to achieve a new high score!";
+        }
+        
+        
+
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
         
@@ -64,7 +75,7 @@ public class MainManager : MonoBehaviour
             {
                 playerInputField.gameObject.SetActive(false);
                 DataStorage.Instance.playerInputData = playerInputField.text;
-                highScoreText.text = "High Score: " + currentScore + " by " + playerInputField.text;
+                UpdateHighScore();
             }
 
             if (Input.GetKeyDown(KeyCode.Space))
@@ -82,6 +93,11 @@ public class MainManager : MonoBehaviour
             DataStorage.Instance.highScoreData = currentScore;
                         
         }
+    }
+
+    void UpdateHighScore()
+    {
+        highScoreText.text = "High Score: " + DataStorage.Instance.highScoreData + " by " + DataStorage.Instance.playerInputData;
     }
 
     void GetPlayerInput()
