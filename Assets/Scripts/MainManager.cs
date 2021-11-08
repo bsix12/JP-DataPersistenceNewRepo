@@ -24,6 +24,8 @@ public class MainManager : MonoBehaviour
     public TextMeshProUGUI credits;
     public AudioSource audioSource;
     public AudioClip brickSound;
+    public AudioClip gameOverSound;
+    public AudioClip highScoreSound;
     
     private bool m_Started = false;    
     private bool m_GameOver = false;
@@ -103,12 +105,14 @@ public class MainManager : MonoBehaviour
         {
             inputFieldIsActive = true;
             newHighScoreInfo.gameObject.SetActive(true);
+            audioSource.PlayOneShot(highScoreSound);
             GetPlayerInput();
             DataStorage.Instance.highScoreData = currentScore;
         }
         else
         {
             pressSpaceInfo.gameObject.SetActive(true);
+            audioSource.PlayOneShot(gameOverSound, 0.3f);
             resetSpaceIsActive = true;
         }
     }
@@ -144,7 +148,7 @@ public class MainManager : MonoBehaviour
 
     public void ResetHighScore()
     {
-        if (!m_Started)
+        if (!m_Started || m_GameOver)
         {
             DataStorage.Instance.playerInputData = " ";
             DataStorage.Instance.highScoreData = 0;

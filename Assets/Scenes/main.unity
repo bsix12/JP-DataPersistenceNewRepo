@@ -1041,6 +1041,8 @@ MonoBehaviour:
   credits: {fileID: 906953334}
   audioSource: {fileID: 610430374}
   brickSound: {fileID: 8300000, guid: 6ad69afcf349f7348b92666130f019d8, type: 3}
+  gameOverSound: {fileID: 8300000, guid: 0a6c9b8979a1445409a17ea685c9d09b, type: 3}
+  highScoreSound: {fileID: 8300000, guid: 3b8508d7624d6c34486959c229db786b, type: 3}
 --- !u!1 &455529321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,8 +1891,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Credits\n\nSound Effects:\ncoin.wav (cc0), author Fupi of OpenGameArt.org\npingpongbat.ogg
-    (cc0), author Aj_ of OpenGameArt.org \n\n\n\n\nCompleted on November 7, 2021
-    for Unity Learn Junior Programmer, \nData Persistence New Repo Submission Project"
+    (cc0), author Aj_ of OpenGameArt.org\nGameOver.wav (cc0), author den_yes of OpenGameArt.org\nWin
+    sound.wav (cc0), author Listener of OpenGameArt.org\n\n\n\n\nCompleted on November
+    7, 2021 for Unity Learn Junior Programmer, \nData Persistence New Repo Submission
+    Project"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
