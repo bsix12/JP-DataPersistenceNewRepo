@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 
 public class MainManager : MonoBehaviour
 {
@@ -17,6 +21,7 @@ public class MainManager : MonoBehaviour
     public TextMeshProUGUI newHighScoreInfo;
     public TMP_InputField playerInputField;
     public TextMeshProUGUI pressSpaceInfo;
+    public TextMeshProUGUI credits;
     public AudioSource audioSource;
     public AudioClip brickSound;
     
@@ -24,6 +29,7 @@ public class MainManager : MonoBehaviour
     private bool m_GameOver = false;
     private bool inputFieldIsActive = false;
     private bool resetSpaceIsActive = false;
+    private bool creditsIsActive = false;
     private int currentScore;
     
     // Start is called before the first frame update
@@ -143,8 +149,29 @@ public class MainManager : MonoBehaviour
             DataStorage.Instance.playerInputData = " ";
             DataStorage.Instance.highScoreData = 0;
             highScoreText.text = "Play to achieve a new high score!";
-        }
+        }               
+    }
 
-        
+    public void Credits()
+    {
+        if (creditsIsActive)
+        {
+            credits.gameObject.SetActive(false);
+            creditsIsActive = false;
+        }
+        else
+        {
+            credits.gameObject.SetActive(true);
+            creditsIsActive = true;
+        }
+    }
+
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#else
+        Application.Quit();
+#endif
     }
 }
