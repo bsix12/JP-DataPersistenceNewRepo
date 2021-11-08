@@ -17,6 +17,8 @@ public class MainManager : MonoBehaviour
     public TextMeshProUGUI newHighScoreInfo;
     public TMP_InputField playerInputField;
     public TextMeshProUGUI pressSpaceInfo;
+    public AudioSource audioSource;
+    public AudioClip brickSound;
     
     private bool m_Started = false;    
     private bool m_GameOver = false;
@@ -118,6 +120,7 @@ public class MainManager : MonoBehaviour
     void AddPoint(int point)
     {
         currentScore += point;
+        audioSource.PlayOneShot(brickSound, 0.4f);
         scoreText.text = $"Score : {currentScore}";
     }
 

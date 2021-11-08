@@ -6,6 +6,9 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     private Rigidbody m_Rigidbody;
+    public AudioSource audioSource;
+    public AudioClip paddleSound;
+
 
     void Start()
     {
@@ -14,6 +17,8 @@ public class Ball : MonoBehaviour
     
     private void OnCollisionExit(Collision other)
     {
+        audioSource.PlayOneShot(paddleSound, 0.2f);
+        
         var velocity = m_Rigidbody.velocity;
         
         //after a collision we accelerate a bit
