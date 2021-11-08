@@ -153,6 +153,7 @@ public class MainManager : MonoBehaviour
             DataStorage.Instance.playerInputData = " ";
             DataStorage.Instance.highScoreData = 0;
             highScoreText.text = "Play to achieve a new high score!";
+            DataStorage.Instance.SaveDataToDisk();
         }               
     }
 
