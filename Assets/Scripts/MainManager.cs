@@ -14,6 +14,7 @@ public class MainManager : MonoBehaviour
     public Brick BrickPrefab;
     public int LineCount = 6;
     public Rigidbody Ball;
+    public GameObject paddle;
 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;              // reference to highScoreText on canvas.  ADD REFERENCE in inspector
@@ -137,6 +138,7 @@ public class MainManager : MonoBehaviour
     public void GameOver()
     {
         m_GameOver = true;
+        paddle.gameObject.SetActive(false);
         gameOverText.gameObject.SetActive(true);
         CheckIfHighScore();                 // check if new high score
     }
