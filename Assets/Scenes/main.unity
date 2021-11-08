@@ -573,7 +573,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.4, y: -54.80001}
+  m_AnchoredPosition: {x: 0.4, y: -56.6}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &128592350
@@ -605,8 +605,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -629,7 +629,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 1024
   m_textAlignment: 65535
@@ -1894,7 +1894,7 @@ MonoBehaviour:
   m_text: "Credits\n\nSound Effects:\ncoin.wav (cc0), author Fupi of OpenGameArt.org\npingpongbat.ogg
     (cc0), author Aj_ of OpenGameArt.org\nGameOver.wav (cc0), author den_yes of OpenGameArt.org\nWin
     sound.wav (cc0), author Listener of OpenGameArt.org\n\n\n\n\nCompleted on November
-    7, 2021 for Unity Learn Junior Programmer, \nData Persistence New Repo Submission
+    8, 2021 for Unity Learn Junior Programmer, \nData Persistence New Repo Submission
     Project"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
